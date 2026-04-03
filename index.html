@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pratik  | Nepal Weather Forecast</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="night">
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="ticker-wrap">
+      <div id="ticker" class="ticker"><span>Loading Nepal temperature bar...</span></div>
+    </div>
+    <a class="topbar-credit" href="https://www.pratik-dahal.com.np/" target="_blank" rel="noopener noreferrer">©️pratik</a>
+  </div>
+</div>
+
+<main class="app">
+  <section class="head glass">
+    <h1 class="title">Nepal Weather Forecast</h1>
+    <p class="sub">Live weather snapshots for Nepal cities powered by Open-Meteo.</p>
+
+    <div class="controls">
+      <div id="cityDropdown" class="city-dropdown">
+        <div class="city-dropdown-head">
+          <input id="citySearch" type="text" placeholder="Select city (type to search inside dropdown)" autocomplete="off">
+          <button id="cityDropdownToggle" type="button" aria-label="Toggle city list">▼</button>
+        </div>
+        <div id="cityDropdownPanel" class="city-dropdown-panel hidden">
+          <p id="cityDropdownMeta" class="city-dropdown-meta">Loading all Nepal cities...</p>
+          <div id="cityOptions" class="city-options"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="loading" class="sk">
+    <div class="skc">
+      <div class="sl" style="width:50%;height:18px"></div>
+      <div class="sl" style="width:32%;height:44px"></div>
+      <div class="sl" style="width:65%"></div>
+    </div>
+    <div class="skc">
+      <div class="sl" style="width:85%"></div>
+      <div class="sl" style="width:70%"></div>
+      <div class="sl" style="width:55%"></div>
+    </div>
+  </section>
+
+  <section id="error" class="err hidden"></section>
+
+  <section id="content" class="content hidden">
+    <article class="hero glass" id="hero">
+      <div id="heroIcon"></div>
+      <div>
+        <h2 id="cityName" class="city">Kathmandu</h2>
+        <p id="cityMeta" class="meta">Bagmati Province, Nepal</p>
+        <p id="heroTemp" class="temp">--°C</p>
+        <p id="heroCond" class="cond">Loading...</p>
+        <p id="heroRange" class="range">H: --°C | L: --°C</p>
+      </div>
+    </article>
+
+    <section class="grid4 glass">
+      <article class="item"><p class="lab">Humidity</p><p id="vHum" class="val">--</p></article>
+      <article class="item"><p class="lab">Wind Speed</p><p id="vWind" class="val">--</p></article>
+      <article class="item"><p class="lab">UV Index (Max)</p><p id="vUv" class="val">--</p></article>
+      <article class="item"><p class="lab">Feels Like</p><p id="vFeel" class="val">--</p></article>
+    </section>
+
+    <section class="days">
+      <article class="day"><h3 class="dti">Yesterday</h3><p id="dYDate" class="dd">--</p><div id="dYIcon"></div><p id="dYTemp" class="dt">--</p><p id="dYCond" class="dc">--</p></article>
+      <article class="day"><h3 class="dti">Today</h3><p id="dTDate" class="dd">--</p><div id="dTIcon"></div><p id="dTTemp" class="dt">--</p><p id="dTCond" class="dc">--</p></article>
+      <article class="day"><h3 class="dti">Tomorrow</h3><p id="dMDate" class="dd">--</p><div id="dMIcon"></div><p id="dMTemp" class="dt">--</p><p id="dMCond" class="dc">--</p></article>
+    </section>
+  </section>
+
+  <section class="all-cities glass">
+    <div class="all-head">
+      <h2>All Nepal Cities Live Data</h2>
+      <button id="loadAllBtn" type="button">Load / Refresh All Cities</button>
+    </div>
+    <p id="allStatus" class="all-status">City catalog is loading...</p>
+
+    <div class="all-tools">
+      <input id="allFilter" type="text" placeholder="Filter cities by name or province" disabled>
+      <div class="pager">
+        <button id="prevPage" type="button" disabled>Prev</button>
+        <span id="pageInfo">Page 0 / 0</span>
+        <button id="nextPage" type="button" disabled>Next</button>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="cities-table">
+        <thead>
+          <tr>
+            <th>City</th>
+            <th>Province</th>
+            <th>Temperature</th>
+            <th>Condition</th>
+            <th>Humidity</th>
+            <th>Wind</th>
+          </tr>
+        </thead>
+        <tbody id="allCitiesBody">
+          <tr><td colspan="6">Click "Load / Refresh All Cities" to fetch real live data (rate-limit safe mode).</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
